@@ -97,6 +97,10 @@
         StatHat.postQueue = async.queue(StatHat._processTask.bind(StatHat),
                                         parseInt(process.env.STATHAT_OUTBOUND_CONCURRENCY || '10')),
 
+        StatHat.length = function() {
+          return this.postQueue.length();
+        },
+
         module.exports = StatHat;
 
 }())
